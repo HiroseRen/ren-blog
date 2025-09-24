@@ -5,6 +5,7 @@ date: 2025-09-24 10:00:00 +0900
 image: /assets/images/dg.jpg
 ---
 
+![キャプション]({{ '/assets/images/dg.jpg' | relative_url }})
 これは `_posts/` にある **Markdown** の投稿です。  
 Jekyll が自動で HTML に変換し、`_layouts/default.html` のテンプレートに差し込みます。
 
