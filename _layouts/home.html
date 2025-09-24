@@ -1,0 +1,49 @@
+---
+layout: default
+---
+
+<section class="hero">
+  <div class="grid">
+    {% assign featured = site.posts | slice: 0,3 %} {% for post in featured %}
+    <article class="hero-card">
+      <a href="{{ post.url | relative_url }}">
+        {% if post.image %}
+        <img src="{{ post.image }}" alt="{{ post.title }}" />
+        {% endif %}
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.excerpt | strip_html | truncate: 80 }}</p>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="content-grid">
+  <main>
+    <h3>新着記事</h3>
+    {% for post in site.posts limit:10 %}
+    <article class="post-card">
+      <a href="{{ post.url | relative_url }}">
+        {% if post.image %}
+        <img src="{{ post.image }}" alt="{{ post.title }}" />
+        {% endif %}
+        <div>
+          <h4>{{ post.title }}</h4>
+          <p>{{ post.excerpt | strip_html | truncate: 100 }}</p>
+        </div>
+      </a>
+    </article>
+    {% endfor %}
+  </main>
+
+  <aside>
+    <h3>人気記事</h3>
+    <ol class="ranking">
+      {% for post in site.posts limit:5 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </li>
+      {% endfor %}
+    </ol>
+  </aside>
+</section>
