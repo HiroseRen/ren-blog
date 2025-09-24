@@ -1,3 +1,22 @@
-remote_theme: pages-themes/slate@v0.2.0
+# remote_theme: pages-themes/slate@v0.2.0
+# plugins:
+#   - jekyll-remote-theme
+title: "My Markdown Blog"
+description: "Jekyll + Markdown + GTM"
+theme: minima
+
+# Set your GitHub Pages URL
+url: "https://hiroseren.github.io"
+baseurl: "/ren-blog"
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Plugins supported by GitHub Pages
 plugins:
-  - jekyll-remote-theme
+  - jekyll-feed
+
+# Site params
+gtm_container_id: "GTM-MZVLZD84" # <= Replace with your GTM ID
