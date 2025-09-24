@@ -7,87 +7,29 @@
       {% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}
     </title>
 
-    <!-- ① モダンなベーススタイル（軽量クラスレスCSS） -->
+    <!-- フォント -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet" />
+
+    <!-- ベースCSS（入れているなら可） -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/@picocss/pico@2/css/pico.min.css" />
 
-    <!-- ② 既存のカスタムCSS（この後ちょい調整します） -->
+    <!-- あなたのCSS（1回だけでOK） -->
     <link
       rel="stylesheet"
       href="{{ '/assets/css/style.css' | relative_url }}" />
 
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-MZVLZD84");
-    </script>
-    <!-- End Google Tag Manager -->
+    <!-- GTM（_includes/head.html に任せる / ここで1回だけ） -->
     {%- include head.html -%}
   </head>
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-MZVLZD84"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    {%- if site.gtm_container_id and site.gtm_container_id != "GTM-XXXXXXX" -%}
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_container_id }}"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"></iframe
-    ></noscript>
-    {%- endif -%}
 
-    <!-- ヘッダー／ナビ -->
-    <header class="container">
-      <nav>
-        <ul>
-          <li>
-            <strong
-              ><a href="{{ '/' | relative_url }}">{{ site.title }}</a></strong
-            >
-          </li>
-        </ul>
-        <ul>
-          <li><a href="{{ '/' | relative_url }}">Home</a></li>
-          <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
-        </ul>
-      </nav>
-      <button id="test-button">練習ボタン</button>
-      <script>
-        document
-          .getElementById("test-button")
-          .addEventListener("click", function () {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: "test_button_click",
-            });
-            alert("ボタンが押されました！（GA4にはイベントが飛びました）");
-          });
-      </script>
-    </header>
+<body class="theme-luxe">
+  {%- if site.gtm_container_id and site.gtm_container_id != "GTM-XXXXXXX" -%}
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_container_id }}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  {%- endif -%}
 
-    <!-- 本文 -->
-    <main class="container">{{ content }}</main>
-
-    <!-- フッター（任意） -->
-    <footer class="container">
-      <small>&copy; {{ site.title }} — Powered by Jekyll</small>
-    </footer>
-  </body>
 </html>
