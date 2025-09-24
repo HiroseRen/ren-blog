@@ -1,8 +1,8 @@
 # remote_theme: pages-themes/slate@v0.2.0
 # plugins:
 #   - jekyll-remote-theme
-title: "My Markdown Blog"
-description: "Jekyll + Markdown + GTM"
+title: "seren's blog"
+description: "serenの日記"
 theme: minima
 
 # Set your GitHub Pages URL
