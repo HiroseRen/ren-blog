@@ -6,10 +6,16 @@
     <title>
       {% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}
     </title>
+
+    <!-- ① モダンなベーススタイル（軽量クラスレスCSS） -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@2/css/pico.min.css" />
+
+    <!-- ② 既存のカスタムCSS（この後ちょい調整します） -->
     <link
       rel="stylesheet"
       href="{{ '/assets/css/style.css' | relative_url }}" />
-    {%- include head.html -%}
 
     <!-- Google Tag Manager -->
     <script>
@@ -25,6 +31,7 @@
       })(window, document, "script", "dataLayer", "GTM-MZVLZD84");
     </script>
     <!-- End Google Tag Manager -->
+    {%- include head.html -%}
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -37,16 +44,38 @@
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
     {%- if site.gtm_container_id and site.gtm_container_id != "GTM-XXXXXXX" -%}
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id={{ site.gtm_container_id }}"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"></iframe
+    ></noscript>
     {%- endif -%}
 
+    <!-- ヘッダー／ナビ -->
     <header class="container">
-      <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
       <nav>
-        <a href="{{ '/' | relative_url }}">Home</a>
-        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+        <ul>
+          <li>
+            <strong
+              ><a href="{{ '/' | relative_url }}">{{ site.title }}</a></strong
+            >
+          </li>
+        </ul>
+        <ul>
+          <li><a href="{{ '/' | relative_url }}">Home</a></li>
+          <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
+        </ul>
       </nav>
     </header>
 
+    <!-- 本文 -->
     <main class="container">{{ content }}</main>
+
+    <!-- フッター（任意） -->
+    <footer class="container">
+      <small>&copy; {{ site.title }} — Powered by Jekyll</small>
+    </footer>
   </body>
 </html>
