@@ -68,6 +68,18 @@
           <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
         </ul>
       </nav>
+      <button id="test-button">練習ボタン</button>
+      <script>
+        document
+          .getElementById("test-button")
+          .addEventListener("click", function () {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: "test_button_click",
+            });
+            alert("ボタンが押されました！（GA4にはイベントが飛びました）");
+          });
+      </script>
     </header>
 
     <!-- 本文 -->
