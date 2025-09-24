@@ -31,7 +31,18 @@
         style="display: none; visibility: hidden"></iframe
     ></noscript>
     {%- endif -%}
-
+    <button id="test-button">練習ボタン</button>
+    <script>
+      document
+        .getElementById("test-button")
+        .addEventListener("click", function () {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: "test_button_click",
+          });
+          alert("ボタンが押されました！（GA4にはイベントが飛びました）");
+        });
+    </script>
     <header class="container site-header">
       <nav class="nav">
         <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
